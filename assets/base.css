@@ -20,6 +20,7 @@
   --cream-2:oklch(0.95 0.012 95);         /* crema un punto más cálida */
   --line:oklch(0.86 0.012 110);           /* hairlines */
   --coral-soft:oklch(0.93 0.04 45);       /* fondo coral muy suave */
+  --coral-text:#B8431F;                   /* coral oscurecido solo para texto pequeño (contraste AA) */
   --ink-soft:oklch(0.46 0.012 110);       /* texto secundario */
 
   --shadow-sm:0 1px 2px rgba(15,110,86,.06), 0 6px 18px rgba(15,110,86,.06);
@@ -147,9 +148,12 @@ p{margin:0;text-wrap:pretty;}
 .foot{background:var(--teal-darkest);color:color-mix(in srgb,var(--cream) 86%,transparent);}
 .foot a:hover{color:var(--teal-light);}
 
-/* ---------- Reveal (neutralizado: contenido siempre visible y estable) ---------- */
-.reveal{opacity:1;transform:none;}
+/* ---------- Reveal on scroll (suave, con guardia de accesibilidad) ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 .reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
 
 /* ---------- Mobile nav shared ---------- */
 .nav-toggle{display:none;width:44px;height:44px;border:0;background:none;align-items:center;justify-content:center;}

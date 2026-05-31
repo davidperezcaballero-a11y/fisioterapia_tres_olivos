@@ -3,9 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fisioterapia 3 Olivos — Opción A · Sereno</title>
+<title>Fisioterapia 3 Olivos — Clínica de fisioterapia en Tres Olivos, Madrid</title>
+<meta name="description" content="Clínica de fisioterapia en Tres Olivos (Madrid) desde 1999. Tratamiento manual personalizado, recuperación postoperatoria, lesiones deportivas, suelo pélvico, ATM, INDIBA®, Pilates y ecografía diagnóstica.">
+<link rel="canonical" href="https://www.fisioterapia3olivos.es/">
+<meta name="theme-color" content="#0F6E56">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Fisioterapia 3 Olivos">
+<meta property="og:title" content="Fisioterapia 3 Olivos — Fisioterapia cercana, personal y efectiva">
+<meta property="og:description" content="Tratamiento manual personalizado en Tres Olivos, Madrid. Fisioterapia, recuperación postoperatoria, lesiones deportivas e INDIBA®. Desde 1999.">
+<meta property="og:image" content="assets/original/hero-clinica.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" href="assets/emblema-manos.png">
 <link rel="stylesheet" href="assets/base.css">
+
+<!-- Datos estructurados: negocio local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physiotherapy",
+  "name": "Fisioterapia 3 Olivos",
+  "description": "Clínica de fisioterapia en Tres Olivos (Madrid) desde 1999. Diagnóstico mediante ecografía de última generación y tratamiento manual personalizado.",
+  "image": "assets/original/hero-clinica.jpg",
+  "url": "https://www.fisioterapia3olivos.es/",
+  "telephone": "+34917353303",
+  "foundingDate": "1999",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plaza de los Tres Olivos, local",
+    "addressLocality": "Madrid",
+    "postalCode": "28034",
+    "addressCountry": "ES"
+  },
+  "areaServed": ["Tres Olivos", "Fuencarral", "Montecarmelo", "Las Tablas", "Madrid"],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "22:00"
+  }],
+  "availableService": [
+    {"@type": "MedicalProcedure", "name": "Ecografía diagnóstica musculoesquelética"},
+    {"@type": "MedicalProcedure", "name": "Fisioterapia y rehabilitación"},
+    {"@type": "MedicalProcedure", "name": "Recuperación postoperatoria"},
+    {"@type": "MedicalProcedure", "name": "Tratamiento de lesiones deportivas"},
+    {"@type": "MedicalProcedure", "name": "Fisioterapia de suelo pélvico y postparto"},
+    {"@type": "MedicalProcedure", "name": "ATM y cefalea tensional"},
+    {"@type": "MedicalProcedure", "name": "INDIBA®, Pilates e hipopresivos"}
+  ]
+}
+</script>
 <style>
 /* ===================== OPCIÓN A — SERENO / EDITORIAL ===================== */
 body.a{background:var(--cream);}
@@ -74,7 +125,7 @@ body.a{background:var(--cream);}
 .svc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent;}
 .svc-card h3{font-size:24px;margin:22px 0 10px;}
 .svc-card p{font-size:15px;color:var(--ink-soft);}
-.svc-card .more{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:14px;font-weight:600;color:var(--coral);}
+.svc-card .more{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:14px;font-weight:600;color:var(--coral-text);}
 .svc-card .more svg{width:15px;height:15px;transition:transform .25s var(--ease);}
 .svc-card:hover .more svg{transform:translateX(4px);}
 
@@ -94,7 +145,7 @@ body.a{background:var(--cream);}
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px;}
 .team .member .ph{min-height:240px;border-radius:var(--r-md);margin-bottom:14px;}
 .team .member b{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--teal-deep);font-weight:600;}
-.team .member span{display:block;font-size:13px;color:var(--coral);font-weight:600;letter-spacing:.03em;}
+.team .member span{display:block;font-size:13px;color:var(--coral-text);font-weight:600;letter-spacing:.03em;}
 .team .member .ph.photo img{aspect-ratio:4/5;}
 
 /* Proceso */
@@ -316,7 +367,7 @@ body.a{background:var(--cream);}
 </section>
 
 <!-- ===== TECNOLOGÍA ===== -->
-<section class="section tech">
+<section class="section tech" id="tecnologia">
   <div class="wrap tech-grid">
     <div class="reveal">
       <p class="eyebrow">Tecnología al servicio del trato</p>
@@ -324,6 +375,7 @@ body.a{background:var(--cream);}
       <p class="lead" style="margin-top:20px;">La base sigue siendo manual y personalizada. La tecnología entra cuando mejora el resultado, no como sustituto de la valoración clínica.</p>
     </div>
     <div class="tech-list reveal">
+      <div class="ti"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M3 12a9 9 0 0 0 18 0"/><circle cx="12" cy="12" r="2.2"/></svg></div><div><b>Ecografía diagnóstica</b><br><span>Equipo de última generación para valorar la lesión en consulta</span></div></div>
       <div class="ti"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div><div><b>INDIBA®</b><br><span>Radiofrecuencia no invasiva y regenerativa</span></div></div>
       <div class="ti"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21l4-1L18 9"/><path d="M14 4l6 6"/></svg></div><div><b>Punción seca</b><br><span>Apoyo preciso para dolor miofascial</span></div></div>
       <div class="ti"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></div><div><b>Ultrasonido</b><br><span>Aparatología de apoyo cuando suma</span></div></div>
@@ -366,7 +418,7 @@ body.a{background:var(--cream);}
     </div>
     <div class="steps">
       <div class="step reveal"><div class="num">01</div><div><h3>Te escuchamos</h3><p>Una primera valoración sin prisa: tu historia, tus dolores, tus objetivos. Exploramos a fondo antes de proponer nada.</p></div></div>
-      <div class="step reveal"><div class="num">02</div><div><h3>Valoración precisa</h3><p>Revisamos tu caso, tus síntomas y, si los tienes, tus informes previos. Entender bien el problema es la mitad del tratamiento.</p></div></div>
+      <div class="step reveal"><div class="num">02</div><div><h3>Valoración precisa</h3><p>Revisamos tu caso, tus síntomas y tus informes previos, y cuando ayuda al diagnóstico exploramos la zona con ecografía. Entender bien el problema es la mitad del tratamiento.</p></div></div>
       <div class="step reveal"><div class="num">03</div><div><h3>Tu plan, 100% personalizado</h3><p>Diseñamos un tratamiento a tu medida y siempre con el mismo fisioterapeuta de principio a fin.</p></div></div>
       <div class="step reveal"><div class="num">04</div><div><h3>Terapia manual + tecnología</h3><p>Trabajo manual como base, con INDIBA®, punción seca o lo que tu caso necesite para acelerar la recuperación.</p></div></div>
       <div class="step reveal"><div class="num">05</div><div><h3>Seguimiento y prevención</h3><p>Te damos pautas y seguimiento para que la lesión no vuelva. El objetivo es que dejes de necesitarnos.</p></div></div>
@@ -471,7 +523,7 @@ body.a{background:var(--cream);}
       </div>
       <div>
         <h4>Tratamientos</h4>
-        <ul><li><a href="#servicios">Fisioterapia y rehabilitación</a></li><li><a href="#servicios">Postoperatorio</a></li><li><a href="#servicios">ATM y cefalea</a></li><li><a href="#servicios">Suelo pélvico</a></li><li><a href="#servicios">INDIBA®</a></li></ul>
+        <ul><li><a href="#tecnologia">Ecografía diagnóstica</a></li><li><a href="#servicios">Fisioterapia y rehabilitación</a></li><li><a href="#servicios">Postoperatorio</a></li><li><a href="#servicios">ATM y cefalea</a></li><li><a href="#servicios">Suelo pélvico</a></li><li><a href="#servicios">INDIBA®</a></li></ul>
       </div>
       <div>
         <h4>Clínica</h4>
