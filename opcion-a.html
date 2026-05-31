@@ -90,11 +90,11 @@ body.a{background:var(--cream);}
 .hero-contact .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:6px;}
 .hero-contact .v{display:block;font-size:15px;color:var(--teal-deep);font-weight:700;line-height:1.35;}
 .hero-contact .v.small{font-size:13px;font-weight:600;color:var(--ink-soft);}
-.hero-trust{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap;}
-.hero-trust .t{display:flex;flex-direction:column;gap:2px;}
-.hero-trust .t b{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--teal-deep);font-weight:600;line-height:1;}
-.hero-trust .t span{font-size:13px;color:var(--ink-soft);max-width:16ch;}
-.hero-trust .sep{width:1px;background:var(--line);}
+.hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;margin-top:38px;max-width:540px;}
+.hero-trust .t{display:flex;flex-direction:column;gap:3px;padding-left:16px;border-left:2px solid color-mix(in srgb,var(--teal) 28%,transparent);}
+.hero-trust .t b{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--teal-deep);font-weight:600;line-height:1;}
+.hero-trust .t span{font-size:13px;color:var(--ink-soft);max-width:20ch;}
+.hero-trust .sep{display:none;}
 .hero-copy{display:flex;flex-direction:column;justify-content:center;}
 .hero-media{position:relative;}
 .hero-media .ph{height:100%;min-height:520px;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);}
@@ -119,6 +119,11 @@ body.a{background:var(--cream);}
 .promise .sign{margin-top:8px;font-weight:600;color:var(--teal-deep);}
 
 /* Servicios */
+.diag-feature{display:flex;align-items:center;gap:18px;justify-content:center;text-align:left;margin-top:24px;
+  background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:20px 26px;box-shadow:var(--shadow-sm);}
+.diag-feature .ico{flex:none;}
+.diag-feature p{margin:0;max-width:52ch;}
+@media(max-width:560px){.diag-feature{flex-direction:column;text-align:center;}}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px;}
 .svc-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:34px 30px;
   transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;}
@@ -289,6 +294,8 @@ body.a{background:var(--cream);}
         <div class="t"><b>1 a 1</b><span>siempre el mismo fisioterapeuta</span></div>
         <div class="sep"></div>
         <div class="t"><b>INDIBA®</b><span>centro especializado con tecnología de apoyo</span></div>
+        <div class="sep"></div>
+        <div class="t"><b>Ecografía</b><span>diagnóstico en consulta con equipo de última generación</span></div>
       </div>
     </div>
     <div class="hero-media reveal">
@@ -324,6 +331,10 @@ body.a{background:var(--cream);}
     <div class="center reveal" style="max-width:680px;margin:0 auto;">
       <p class="eyebrow no-rule" style="justify-content:center;">Tratamientos</p>
       <h2 class="h2">Un plan pensado para tu lesión, no para la media</h2>
+      <div class="diag-feature">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M2 9a10 10 0 0 1 20 0"/><path d="M5.5 11a6.5 6.5 0 0 1 13 0"/><circle cx="12" cy="13" r="1.6"/><path d="M12 14.6V21"/><path d="M9.5 21h5"/></svg></div>
+        <p class="lead">Empezamos por un diagnóstico preciso: la <strong>ecografía es nuestra herramienta clave</strong> para ver la lesión en consulta y diseñar el tratamiento exacto que necesitas.</p>
+      </div>
     </div>
     <div class="svc-grid">
       <article class="svc-card reveal">
