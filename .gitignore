@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+Icon
+Icon?
+._*
+
+# Vercel
+.vercel
+
+# Servidor de preview local
+.claude/launch.json
