@@ -160,5 +160,13 @@ Botones: `border-radius: 999px` (píldora).
 | `assets/original/mapa-clinica.jpg` | Captura de mapa de ubicación |
 | `preview/` | Tarjetas del sistema de diseño |
 | `ui_kits/web/` | UI Kit del sitio web |
-| `opcion-a.html` | Web completa final (referencia) |
+| `index.html` | Web completa activa |
+| `reserva-online.html` | Demostración del flujo de reserva online |
+| `assets/timp-config.js` | URL centralizada para conectar la reserva real de TIMP |
 | `SKILL.md` | Instrucciones para agente AI |
+
+## Integración TIMP
+
+La web incluye una demostración navegable del futuro flujo de reservas. Cuando
+esté disponible el enlace real de la clínica en TIMP, solo hay que sustituir el
+valor `window.TIMP_BOOKING_URL` dentro de `assets/timp-config.js`.

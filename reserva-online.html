@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva online · Fisioterapia 3 Olivos</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/emblema-manos.png">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+body{min-height:100vh;background:var(--cream);}
+.demo-note{background:var(--coral-soft);color:var(--coral-text);padding:10px 20px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;}
+.booking-head{padding:22px 0;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--cream) 94%,transparent);}
+.booking-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.brand{display:flex;align-items:center;gap:13px;}
+.brand img{width:58px;}
+.brand b{font-family:'Cormorant Garamond',serif;font-size:27px;color:var(--teal-deep);font-weight:600;}
+.booking-main{padding:62px 0 88px;}
+.intro{max-width:720px;margin:0 auto 40px;text-align:center;}
+.intro h1{font-size:clamp(40px,6vw,66px);}
+.intro .lead{margin-top:17px;}
+.shell{max-width:940px;margin:auto;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden;}
+.progress{display:grid;grid-template-columns:repeat(4,1fr);background:var(--teal-darkest);color:var(--cream);}
+.progress span{padding:17px 10px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);}
+.progress span:last-child{border:0;}
+.progress .active{background:var(--teal-deep);color:var(--teal-light);}
+.panel{display:none;padding:42px;}
+.panel.active{display:block;}
+.panel-title{margin-bottom:28px;}
+.panel-title h2{font-size:clamp(29px,4vw,40px);}
+.panel-title p{margin-top:8px;color:var(--ink-soft);}
+.options{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.option{border:1.5px solid var(--line);border-radius:var(--r-md);padding:20px;text-align:left;background:var(--white);color:var(--ink);transition:.25s var(--ease);}
+.option:hover,.option.selected{border-color:var(--teal);background:var(--teal-tint);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.option b{display:block;color:var(--teal-deep);font-size:16px;margin-bottom:4px;}
+.option small{color:var(--ink-soft);font-size:13px;}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.slot{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px;background:var(--white);color:var(--teal-deep);font-weight:700;}
+.slot:hover,.slot.selected{background:var(--teal-deep);border-color:var(--teal-deep);color:var(--cream);}
+.actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:32px;padding-top:25px;border-top:1px solid var(--line);}
+.actions .btn[disabled]{opacity:.45;pointer-events:none;}
+.summary{background:var(--teal-tint);border-radius:var(--r-md);padding:24px;display:grid;gap:12px;margin-bottom:26px;}
+.summary div{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid color-mix(in srgb,var(--teal) 18%,transparent);padding-bottom:10px;}
+.summary div:last-child{border:0;padding:0;}
+.summary span{color:var(--ink-soft);}
+.login-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.login-card{padding:26px;border:1px solid var(--line);border-radius:var(--r-md);}
+.login-card h3{font-size:27px;margin-bottom:8px;}
+.login-card p{color:var(--ink-soft);font-size:14px;margin-bottom:20px;}
+.help{text-align:center;margin-top:25px;color:var(--ink-soft);font-size:14px;}
+@media(max-width:680px){
+  .booking-main{padding:42px 0 64px;}
+  .booking-head .btn{padding:12px 16px;}
+  .progress span{font-size:0;padding:12px;}
+  .progress span::first-letter{font-size:13px;}
+  .panel{padding:28px 20px;}
+  .options,.login-grid{grid-template-columns:1fr;}
+  .slots{grid-template-columns:repeat(2,1fr);}
+  .actions{align-items:stretch;flex-direction:column-reverse;}
+  .actions .btn{width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="demo-note">DEMOSTRACIÓN · Este flujo todavía no crea citas reales en TIMP</div>
+<header class="booking-head">
+  <div class="wrap">
+    <a href="index.html" class="brand"><img src="assets/emblema-manos.png" alt=""><b>Fisioterapia 3 Olivos</b></a>
+    <a href="index.html" class="btn btn-ghost">Volver a la web</a>
+  </div>
+</header>
+
+<main class="booking-main">
+  <div class="wrap">
+    <div class="intro">
+      <p class="eyebrow no-rule">Reserva online</p>
+      <h1>Tu cita, en pocos pasos</h1>
+      <p class="lead">Elige el tratamiento, el profesional y el horario que mejor te encajen.</p>
+    </div>
+
+    <div class="shell">
+      <div class="progress" aria-label="Progreso de la reserva">
+        <span class="active">1 · Tratamiento</span><span>2 · Profesional</span><span>3 · Horario</span><span>4 · Acceso</span>
+      </div>
+
+      <section class="panel active" data-step="0">
+        <div class="panel-title"><h2>¿Qué necesitas?</h2><p>Selecciona el motivo principal de tu cita.</p></div>
+        <div class="options" data-choice="service">
+          <button class="option" data-value="Primera valoración"><b>Primera valoración</b><small>Para pacientes nuevos o una lesión nueva</small></button>
+          <button class="option" data-value="Fisioterapia y rehabilitación"><b>Fisioterapia y rehabilitación</b><small>Tratamiento y seguimiento personalizado</small></button>
+          <button class="option" data-value="Recuperación postoperatoria"><b>Recuperación postoperatoria</b><small>Recuperación funcional después de cirugía</small></button>
+          <button class="option" data-value="Pilates terapéutico"><b>Pilates terapéutico</b><small>Springboard, fuerza y prevención</small></button>
+        </div>
+        <div class="actions"><span></span><button class="btn btn-primary next" disabled>Continuar</button></div>
+      </section>
+
+      <section class="panel" data-step="1">
+        <div class="panel-title"><h2>Elige profesional</h2><p>Puedes escoger a una persona concreta o ver la primera disponibilidad.</p></div>
+        <div class="options" data-choice="professional">
+          <button class="option" data-value="Primera disponibilidad"><b>Primera disponibilidad</b><small>La opción más rápida</small></button>
+          <button class="option" data-value="José Ramón Gómez"><b>José Ramón Gómez</b><small>Director y fisioterapeuta</small></button>
+          <button class="option" data-value="Mercedes Pérez"><b>Mercedes Pérez</b><small>ATM, terapia miofascial y Pilates</small></button>
+          <button class="option" data-value="Elena Polo"><b>Elena Polo</b><small>Espalda, ejercicio terapéutico y deporte</small></button>
+        </div>
+        <div class="actions"><button class="btn btn-ghost prev">Atrás</button><button class="btn btn-primary next" disabled>Ver horarios</button></div>
+      </section>
+
+      <section class="panel" data-step="2">
+        <div class="panel-title"><h2>Escoge un horario</h2><p>Disponibilidad de demostración para los próximos días.</p></div>
+        <div class="slots" data-choice="slot">
+          <button class="slot" data-value="Lunes · 10:00">Lun · 10:00</button>
+          <button class="slot" data-value="Lunes · 17:30">Lun · 17:30</button>
+          <button class="slot" data-value="Martes · 12:00">Mar · 12:00</button>
+          <button class="slot" data-value="Miércoles · 09:30">Mié · 09:30</button>
+          <button class="slot" data-value="Miércoles · 19:00">Mié · 19:00</button>
+          <button class="slot" data-value="Jueves · 16:30">Jue · 16:30</button>
+        </div>
+        <div class="actions"><button class="btn btn-ghost prev">Atrás</button><button class="btn btn-primary next" disabled>Continuar</button></div>
+      </section>
+
+      <section class="panel" data-step="3">
+        <div class="panel-title"><h2>Accede para confirmar</h2><p>En la integración real, TIMP gestionará el registro y la confirmación de la cita.</p></div>
+        <div class="summary">
+          <div><span>Tratamiento</span><b id="summaryService"></b></div>
+          <div><span>Profesional</span><b id="summaryProfessional"></b></div>
+          <div><span>Horario</span><b id="summarySlot"></b></div>
+        </div>
+        <div class="login-grid">
+          <div class="login-card"><h3>Ya soy paciente</h3><p>Accede a TIMP para confirmar o gestionar tus citas.</p><button class="btn btn-primary demo-action">Iniciar sesión</button></div>
+          <div class="login-card"><h3>Primera vez</h3><p>Crea tu cuenta de paciente y confirma tu primera reserva.</p><button class="btn btn-coral demo-action">Registrarme</button></div>
+        </div>
+        <div class="actions"><button class="btn btn-ghost prev">Atrás</button><a href="tel:+34917353303" class="btn btn-ghost">Prefiero llamar</a></div>
+      </section>
+    </div>
+    <p class="help">¿Necesitas ayuda? Llámanos al <a href="tel:+34917353303"><strong>91 735 33 03</strong></a> o escríbenos por <a href="https://wa.me/34630187446"><strong>WhatsApp</strong></a>.</p>
+  </div>
+</main>
+
+<script>
+const state={service:"",professional:"",slot:""};
+const panels=[...document.querySelectorAll(".panel")];
+const progress=[...document.querySelectorAll(".progress span")];
+let step=0;
+
+function showStep(nextStep){
+  step=nextStep;
+  panels.forEach((panel,index)=>panel.classList.toggle("active",index===step));
+  progress.forEach((item,index)=>item.classList.toggle("active",index===step));
+  if(step===3){
+    document.getElementById("summaryService").textContent=state.service;
+    document.getElementById("summaryProfessional").textContent=state.professional;
+    document.getElementById("summarySlot").textContent=state.slot;
+  }
+  scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll("[data-choice]").forEach(group=>{
+  group.querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>{
+    group.querySelectorAll("button").forEach(item=>item.classList.remove("selected"));
+    button.classList.add("selected");
+    state[group.dataset.choice]=button.dataset.value;
+    group.closest(".panel").querySelector(".next").disabled=false;
+  }));
+});
+document.querySelectorAll(".next").forEach(button=>button.addEventListener("click",()=>showStep(step+1)));
+document.querySelectorAll(".prev").forEach(button=>button.addEventListener("click",()=>showStep(step-1)));
+document.querySelectorAll(".demo-action").forEach(button=>button.addEventListener("click",()=>alert("Demostración completada. La versión final abrirá TIMP para confirmar esta cita.")));
+</script>
+</body>
+</html>
