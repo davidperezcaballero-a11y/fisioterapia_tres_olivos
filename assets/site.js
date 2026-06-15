@@ -40,7 +40,7 @@ if (headerTarget) {
         <a href="/" aria-label="Fisioterapia 3 Olivos, inicio">${brand()}</a>
         <nav class="desktop-nav" aria-label="Navegación principal">
           ${navLinks(currentPage)}
-          <button class="btn btn-primary" type="button" data-appointment-open>Pedir cita</button>
+          <button class="btn btn-primary" type="button" aria-haspopup="dialog" data-appointment-open>Pedir cita</button>
         </nav>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menú">
           <span class="nav-toggle-lines"></span>
@@ -49,9 +49,9 @@ if (headerTarget) {
     </header>
     <nav class="mobile-nav" id="mobile-navigation" aria-label="Navegación móvil">
       ${navLinks(currentPage)}
-      <button class="btn btn-primary" type="button" data-appointment-open>Pedir cita</button>
+      <button class="btn btn-primary" type="button" aria-haspopup="dialog" data-appointment-open>Pedir cita</button>
     </nav>
-    <div class="appointment-backdrop" data-appointment-dialog>
+    <div class="appointment-backdrop" aria-hidden="true" data-appointment-dialog>
       <section class="appointment-dialog" role="dialog" aria-modal="true" aria-labelledby="appointment-title">
         <button class="dialog-close" type="button" aria-label="Cerrar opciones de cita" data-appointment-close>×</button>
         <h2 id="appointment-title">Pide tu cita</h2>
@@ -132,36 +132,105 @@ if (mobileActionsTarget) {
 }
 
 const navToggle = document.querySelector(".nav-toggle");
+const mobileNav = document.querySelector(".mobile-nav");
+const appointmentDialog = document.querySelector(".appointment-dialog");
+let appointmentTrigger = null;
+
+const focusableSelector = 'a[href], button:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+
+const trapFocusList = (focusable, event) => {
+  if (event.key !== "Tab") return;
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+};
+
+const trapFocus = (container, event) => {
+  const focusable = [...container.querySelectorAll(focusableSelector)].filter((element) => element.offsetParent !== null);
+  trapFocusList(focusable, event);
+};
+
+const mainContent = document.querySelector("main#contenido");
+mainContent?.setAttribute("tabindex", "-1");
+document.querySelector(".skip-link")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  mainContent?.focus();
+  mainContent?.scrollIntoView();
+});
+
+document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+  if (!link.hasAttribute("aria-label")) link.setAttribute("aria-label", "Llamar a Fisioterapia 3 Olivos al 91 735 33 03");
+});
+
+document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
+  if (!link.hasAttribute("aria-label")) link.setAttribute("aria-label", "Escribir a Fisioterapia 3 Olivos por WhatsApp");
+});
+
+document.querySelectorAll(".faq-list details").forEach((details, index) => {
+  const summary = details.querySelector("summary");
+  const answer = details.querySelector("p");
+  if (!summary || !answer) return;
+  const answerId = `respuesta-frecuente-${index + 1}`;
+  answer.id = answerId;
+  summary.setAttribute("aria-controls", answerId);
+  summary.setAttribute("aria-expanded", String(details.open));
+  details.addEventListener("toggle", () => summary.setAttribute("aria-expanded", String(details.open)));
+});
+
 navToggle?.addEventListener("click", () => {
   const open = document.body.classList.toggle("nav-open");
   navToggle.setAttribute("aria-expanded", String(open));
   navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  if (open) mobileNav?.querySelector("a")?.focus();
 });
 
 document.querySelectorAll("[data-appointment-open]").forEach((button) => {
   button.addEventListener("click", () => {
+    appointmentTrigger = button;
     document.body.classList.remove("nav-open");
     navToggle?.setAttribute("aria-expanded", "false");
     document.body.classList.add("appointment-open");
+    document.querySelector("[data-appointment-dialog]")?.setAttribute("aria-hidden", "false");
     document.querySelector("[data-appointment-close]")?.focus();
   });
 });
 
-const closeAppointment = () => document.body.classList.remove("appointment-open");
+const closeAppointment = () => {
+  const wasOpen = document.body.classList.contains("appointment-open");
+  document.body.classList.remove("appointment-open");
+  document.querySelector("[data-appointment-dialog]")?.setAttribute("aria-hidden", "true");
+  if (wasOpen) {
+    const restoreTarget = appointmentTrigger?.closest(".mobile-nav") ? navToggle : appointmentTrigger;
+    restoreTarget?.focus();
+  }
+};
 document.querySelector("[data-appointment-close]")?.addEventListener("click", closeAppointment);
 document.querySelector("[data-appointment-dialog]")?.addEventListener("click", (event) => {
   if (event.target.matches("[data-appointment-dialog]")) closeAppointment();
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    document.body.classList.remove("nav-open");
-    navToggle?.setAttribute("aria-expanded", "false");
-    closeAppointment();
+  if (document.body.classList.contains("appointment-open") && appointmentDialog) {
+    trapFocus(appointmentDialog, event);
+  } else if (document.body.classList.contains("nav-open") && mobileNav) {
+    const menuFocusable = [navToggle, ...mobileNav.querySelectorAll(focusableSelector)].filter((element) => element?.offsetParent !== null);
+    trapFocusList(menuFocusable, event);
   }
 
-  if (event.target.matches(".faq-list summary") && ["Enter", " "].includes(event.key)) {
-    event.preventDefault();
-    event.target.parentElement.open = !event.target.parentElement.open;
+  if (event.key === "Escape") {
+    const navWasOpen = document.body.classList.contains("nav-open");
+    document.body.classList.remove("nav-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+    navToggle?.setAttribute("aria-label", "Abrir menú");
+    if (navWasOpen) navToggle?.focus();
+    closeAppointment();
   }
 });

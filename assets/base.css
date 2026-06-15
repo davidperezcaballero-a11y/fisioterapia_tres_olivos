@@ -1,7 +1,7 @@
 :root {
   --blue-deep: #185a7d;
   --blue-deeper: #10415d;
-  --blue-medium: #2f7fa6;
+  --blue-medium: #287397;
   --blue-light: #b9dceb;
   --blue-tint: #eaf4f8;
   --coral: #b84f36;
@@ -115,8 +115,13 @@ h2 {
 }
 
 :focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 4px;
+  outline: 3px solid var(--white);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--blue-deeper);
+}
+
+main:focus {
+  outline: none;
 }
 
 .site-header {
@@ -142,6 +147,11 @@ h2 {
   min-width: 0;
   align-items: center;
   gap: 10px;
+}
+
+.header-inner > a,
+.footer-brand > a {
+  display: inline-flex;
 }
 
 .brand-emblem {
@@ -244,16 +254,20 @@ h2 {
   background: var(--cream);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s var(--ease), visibility .25s;
+  transition: opacity .25s var(--ease), visibility 0s linear .25s;
 }
 
 .nav-open .mobile-nav {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  transition-delay: 0s;
 }
 
 .mobile-nav a {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
   padding: 10px 12px;
   border-radius: 10px;
   color: var(--blue-deep);
@@ -559,6 +573,8 @@ h2 {
 .text-link {
   display: inline-flex;
   width: fit-content;
+  min-height: 44px;
+  align-items: center;
   margin-top: auto;
   border-bottom: 2px solid var(--coral);
   color: var(--blue-deep);
@@ -872,6 +888,9 @@ h2 {
 }
 
 .legal-index a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
   padding: 5px 0;
   color: var(--ink-soft);
   font-size: .94rem;
@@ -1300,6 +1319,12 @@ h2 {
   text-underline-offset: 4px;
 }
 
+.footer-list a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1343,12 +1368,13 @@ h2 {
   visibility: hidden;
   background: rgba(16, 65, 93, .62);
   opacity: 0;
-  transition: opacity .2s var(--ease), visibility .2s;
+  transition: opacity .2s var(--ease), visibility 0s linear .2s;
 }
 
 .appointment-open .appointment-backdrop {
   visibility: visible;
   opacity: 1;
+  transition-delay: 0s;
 }
 
 .appointment-dialog {
