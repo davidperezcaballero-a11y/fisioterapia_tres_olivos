@@ -22,8 +22,29 @@ const icon = (name) => {
   const icons = {
     phone: '<svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.08 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.84.56 2.8.69A2 2 0 0 1 22 16.92z"/></svg>',
     message: '<svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3v-7a4 4 0 0 1-1-2.65V7a4 4 0 0 1 4-4h11a4 4 0 0 1 4 4z"/></svg>',
+    pin: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+    movement: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 17c4-8 8-8 16-10"/><path d="m14 4 6 3-3 6"/><circle cx="6" cy="18" r="2"/></svg>',
+    pelvic: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 4c-2 4-2 9 1 13l4 3 4-3c3-4 3-9 1-13"/><path d="M8 10c2 2 6 2 8 0"/><path d="M12 12v8"/></svg>',
+    tissue: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7c4-4 6 4 10 0s6 0 6 0"/><path d="M4 12c4-4 6 4 10 0s6 0 6 0"/><path d="M4 17c4-4 6 4 10 0s6 0 6 0"/></svg>',
+    strength: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 10v4m3-7v10m12-10v10m3-7v4M6 12h12"/></svg>',
+    technology: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3h8l2 5v8l-2 5H8l-2-5V8Z"/><path d="M9 12h6M12 9v6"/></svg>',
+    ultrasound: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4v16M9 7c4 1 4 9 0 10M13 5c7 3 7 11 0 14M19 4v16"/></svg>',
+    listen: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 11a6 6 0 0 1 12 0c0 5-4 4-4 8"/><path d="M10 19c1 2 4 2 5 0"/><path d="M9 11a3 3 0 0 1 6 0c0 2-2 2-2 4"/></svg>',
+    plan: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h10v4H7zM5 5H3v16h18V5h-2"/><path d="m8 13 2 2 5-5"/></svg>',
+    hands: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m4 13 5 5c2 2 4 2 6 0l5-5"/><path d="m4 13 3-3 4 4m9-1-3-3-4 4"/><path d="M9 6c1-3 5-3 6 0"/></svg>',
+    followup: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6"/><path d="M4 4v5h5"/><path d="m9 12 2 2 4-5"/></svg>',
+    clock: '<svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>',
+    star: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9Z"/></svg>',
   };
   return icons[name];
+};
+
+const decorateCards = (selector, names) => {
+  document.querySelectorAll(selector).forEach((card, index) => {
+    const name = names[index % names.length];
+    if (!name || card.querySelector(".card-icon")) return;
+    card.insertAdjacentHTML("afterbegin", `<span class="card-icon" aria-hidden="true">${icon(name)}</span>`);
+  });
 };
 
 const navLinks = (current) => pages.map(([key, href, label]) =>
@@ -184,6 +205,14 @@ document.querySelectorAll(".faq-list details").forEach((details, index) => {
   summary.setAttribute("aria-expanded", String(details.open));
   details.addEventListener("toggle", () => summary.setAttribute("aria-expanded", String(details.open)));
 });
+
+decorateCards(".quick-card", ["phone", "message", "pin"]);
+decorateCards(".area-card", ["movement", "pelvic", "tissue", "strength", "technology", "ultrasound"]);
+decorateCards(".treatment-card", ["movement", "listen", "pelvic", "tissue", "followup", "strength"]);
+decorateCards(".technology-card", ["technology", "ultrasound", "followup"]);
+decorateCards(".process-card", ["message", "listen", "plan", "hands", "followup"]);
+decorateCards(".pillar-card", ["listen", "hands", "strength", "technology"]);
+decorateCards(".contact-detail-card", ["phone", "message", "pin", "clock"]);
 
 navToggle?.addEventListener("click", () => {
   const open = document.body.classList.toggle("nav-open");

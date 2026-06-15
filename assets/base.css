@@ -352,6 +352,27 @@ main:focus {
   gap: 12px;
 }
 
+.card-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--blue-deep);
+  background: var(--blue-tint);
+}
+
+.card-icon svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .page-intro {
   padding: clamp(64px, 10vw, 120px) 0;
   background: var(--cream-light);
@@ -466,12 +487,27 @@ main:focus {
 }
 
 .quick-card {
+  position: relative;
   display: grid;
   min-height: 150px;
   align-content: center;
   gap: 3px;
   padding: 24px;
   transition: transform .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.quick-card .card-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+}
+
+.quick-card .card-icon svg {
+  width: 21px;
+  height: 21px;
 }
 
 .quick-card:hover,
@@ -1163,6 +1199,15 @@ main:focus {
   padding-top: 72px;
 }
 
+.process-card .card-icon {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+}
+
 .process-number {
   position: absolute;
   top: 24px;
@@ -1417,6 +1462,338 @@ main:focus {
   background: transparent;
   cursor: pointer;
   font-size: 1.7rem;
+}
+
+@media (max-width: 699px) {
+  body {
+    font-size: 16px;
+    line-height: 1.52;
+  }
+
+  h1,
+  .page-intro--home h1 {
+    margin-bottom: 16px;
+    font-size: clamp(2.45rem, 12vw, 3.15rem);
+    line-height: .98;
+  }
+
+  h2 {
+    margin-bottom: 14px;
+    font-size: clamp(1.9rem, 9vw, 2.45rem);
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    font-size: .68rem;
+    letter-spacing: .15em;
+  }
+
+  .lead {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .page-intro,
+  .home-section,
+  .content-section,
+  .contact-section,
+  .legal-section {
+    padding: 48px 0;
+  }
+
+  .page-intro--home {
+    padding-top: 42px;
+  }
+
+  .page-intro--home .intro-grid {
+    gap: 24px;
+  }
+
+  .page-intro .intro-copy > .btn,
+  .page-intro .intro-copy > .button-row {
+    display: none;
+  }
+
+  .intro-media {
+    border-radius: var(--radius-md);
+  }
+
+  .intro-media img {
+    height: 210px;
+  }
+
+  .section-tight {
+    padding-bottom: 48px;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .section-heading > p:last-child {
+    font-size: .98rem;
+  }
+
+  .section-heading--center {
+    text-align: left;
+  }
+
+  .section-heading--center .eyebrow {
+    justify-content: flex-start;
+  }
+
+  .quick-grid {
+    gap: 10px;
+  }
+
+  .quick-card {
+    min-height: 0;
+    padding: 15px 62px 15px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .quick-card .card-icon {
+    top: 50%;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    transform: translateY(-50%);
+  }
+
+  .quick-card strong {
+    font-size: 1.18rem;
+  }
+
+  .quick-card span:last-child {
+    font-size: .82rem;
+  }
+
+  .reason-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .reason-card {
+    padding: 17px;
+  }
+
+  .reason-card strong {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .reason-card h3 {
+    margin-bottom: 6px;
+    font-size: 1.12rem;
+  }
+
+  .reason-card p {
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+
+  .area-grid,
+  .treatment-grid,
+  .technology-grid,
+  .process-grid,
+  .pillar-grid,
+  .content-grid,
+  .contact-detail-grid,
+  .gallery-grid,
+  .review-grid,
+  .faq-list {
+    gap: 12px;
+  }
+
+  .area-card,
+  .treatment-card,
+  .technology-card,
+  .process-card,
+  .pillar-card,
+  .content-card,
+  .contact-detail-card,
+  .arrival-card,
+  .review-card {
+    min-height: 0;
+    padding: 18px;
+    border-radius: var(--radius-sm);
+  }
+
+  .area-card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+  }
+
+  .area-card .card-icon {
+    grid-row: 1 / span 4;
+  }
+
+  .area-card .area-number {
+    display: none;
+  }
+
+  .area-card h3,
+  .treatment-card h3,
+  .technology-card h3,
+  .process-card h3,
+  .pillar-card h3 {
+    margin-bottom: 7px;
+    font-size: 1.24rem;
+  }
+
+  .area-card p {
+    margin-bottom: 8px;
+    font-size: .88rem;
+    line-height: 1.45;
+  }
+
+  .area-card .text-link {
+    min-height: 32px;
+    font-size: .84rem;
+  }
+
+  .card-icon,
+  .process-card .card-icon {
+    position: static;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 12px;
+  }
+
+  .card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .treatment-card,
+  .technology-card,
+  .pillar-card,
+  .contact-detail-card {
+    padding-left: 18px;
+  }
+
+  .treatment-card > p,
+  .technology-card > p,
+  .process-card > p,
+  .pillar-card > p {
+    font-size: .92rem;
+    line-height: 1.48;
+  }
+
+  .check-list {
+    gap: 6px;
+    margin-top: 14px;
+    font-size: .88rem;
+  }
+
+  .validation-note {
+    margin-top: 14px;
+    padding: 10px 12px;
+    font-size: .78rem;
+  }
+
+  .process-card {
+    padding-top: 18px;
+  }
+
+  .process-number {
+    top: 19px;
+    right: 18px;
+    left: auto;
+    font-size: 1rem;
+  }
+
+  .split-panel,
+  .location-grid {
+    gap: 20px;
+  }
+
+  .value-section .lead,
+  .split-panel .lead {
+    margin-bottom: 16px;
+  }
+
+  .team-grid {
+    gap: 12px;
+  }
+
+  .team-card {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    align-items: center;
+    border-radius: var(--radius-sm);
+  }
+
+  .team-card img {
+    height: 112px;
+    aspect-ratio: auto;
+  }
+
+  .team-card div {
+    padding: 14px;
+  }
+
+  .team-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.14rem;
+  }
+
+  .team-card p {
+    font-size: .84rem;
+  }
+
+  .review-card {
+    min-height: 0;
+  }
+
+  .review-card blockquote {
+    margin: 16px 0;
+    font-size: 1.08rem;
+  }
+
+  .gallery-card img,
+  .gallery-placeholder {
+    height: 190px;
+    min-height: 190px;
+  }
+
+  .gallery-card div {
+    padding: 16px;
+  }
+
+  .faq-list summary {
+    padding: 17px 48px 17px 18px;
+    font-size: 1.08rem;
+  }
+
+  .faq-list details p {
+    padding: 0 18px 18px;
+    font-size: .9rem;
+  }
+
+  .commercial-close {
+    padding-bottom: 52px;
+  }
+
+  .cta-card {
+    padding: 30px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .cta-card p {
+    margin-bottom: 20px;
+    font-size: .96rem;
+  }
+
+  .cta-card .button-row {
+    display: none;
+  }
+
+  .site-footer {
+    padding-top: 48px;
+  }
 }
 
 @media (min-width: 700px) {
