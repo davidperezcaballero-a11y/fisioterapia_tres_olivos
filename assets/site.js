@@ -159,4 +159,9 @@ document.addEventListener("keydown", (event) => {
     navToggle?.setAttribute("aria-expanded", "false");
     closeAppointment();
   }
+
+  if (event.target.matches(".faq-list summary") && ["Enter", " "].includes(event.key)) {
+    event.preventDefault();
+    event.target.parentElement.open = !event.target.parentElement.open;
+  }
 });
