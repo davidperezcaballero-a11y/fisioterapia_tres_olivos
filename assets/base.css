@@ -840,6 +840,119 @@ h2 {
   background: var(--cream-light);
 }
 
+.legal-intro {
+  padding-bottom: clamp(72px, 8vw, 96px);
+}
+
+.legal-section {
+  padding: clamp(64px, 9vw, 112px) 0;
+}
+
+.legal-layout {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+.legal-index {
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+  border: 1px solid rgba(24, 90, 125, .12);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.legal-index strong {
+  margin-bottom: 6px;
+  color: var(--blue-deep);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+}
+
+.legal-index a {
+  padding: 5px 0;
+  color: var(--ink-soft);
+  font-size: .94rem;
+}
+
+.legal-index a:hover {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.legal-content {
+  min-width: 0;
+}
+
+.legal-content section {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.legal-content section + section {
+  margin-top: 52px;
+  padding-top: 52px;
+  border-top: 1px solid var(--line);
+}
+
+.legal-content h2 {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.legal-content p {
+  max-width: 76ch;
+}
+
+.legal-content a:not(.text-link) {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-data {
+  display: grid;
+  gap: 1px;
+  margin: 28px 0 20px;
+  overflow: hidden;
+  border: 1px solid rgba(24, 90, 125, .14);
+  border-radius: var(--radius-md);
+  background: rgba(24, 90, 125, .14);
+}
+
+.legal-data div {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  background: var(--white);
+}
+
+.legal-data dt {
+  color: var(--ink-soft);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.legal-data dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--blue-deep);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.legal-pending {
+  padding: 14px 16px;
+  border-left: 3px solid var(--coral);
+  color: var(--coral-dark);
+  background: #fff6f2;
+  font-size: .88rem;
+}
+
 .content-grid,
 .pillar-grid,
 .treatment-grid,
@@ -1332,6 +1445,16 @@ h2 {
 }
 
 @media (min-width: 1050px) {
+  .legal-layout {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: clamp(48px, 7vw, 96px);
+  }
+
+  .legal-index {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+  }
+
   :root {
     --header-height: 88px;
   }

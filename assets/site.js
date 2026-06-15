@@ -109,7 +109,7 @@ if (footerTarget) {
             <ul class="footer-list">
               <li><a href="${phoneHref}">91 735 33 03</a></li>
               <li><a href="${whatsappHref}">WhatsApp · 630 18 74 46</a></li>
-              <li>Plaza de los Tres Olivos, local · 28034 Madrid</li>
+              <li>Plaza de los Tres Olivos, local · PENDIENTE_NUMERO_EXACTO · 28034 Madrid · ES</li>
               <li>Lunes a viernes · 9:00 a 22:00</li>
             </ul>
           </div>
