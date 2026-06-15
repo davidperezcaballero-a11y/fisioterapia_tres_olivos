@@ -213,6 +213,7 @@ decorateCards(".technology-card", ["technology", "ultrasound", "followup"]);
 decorateCards(".process-card", ["message", "listen", "plan", "hands", "followup"]);
 decorateCards(".pillar-card", ["listen", "hands", "strength", "technology"]);
 decorateCards(".contact-detail-card", ["phone", "message", "pin", "clock"]);
+decorateCards(".home-service-grid > a", ["technology", "movement", "pelvic", "tissue", "strength", "ultrasound"]);
 
 navToggle?.addEventListener("click", () => {
   const open = document.body.classList.toggle("nav-open");
