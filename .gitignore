@@ -9,3 +9,8 @@ Icon?
 
 # Servidor de preview local
 .claude/launch.json
+
+# Documentos temporales y vistas generadas
+*.swp
+*.gdoc
+*_PREVIEW.html
