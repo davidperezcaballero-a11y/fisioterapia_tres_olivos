@@ -10,10 +10,11 @@ const pages = [
 
 const phoneHref = "tel:+34917353303";
 const whatsappHref = "https://wa.me/34630187446";
+const instagramHref = "https://www.instagram.com/fisioterapia_3_olivos/";
 
 const cssLink = document.querySelector('link[rel="stylesheet"][href*="base.css"]');
 const assetsBase = cssLink ? cssLink.getAttribute("href").replace(/base\.css.*$/, "") : "/assets/";
-const assetVersion = "20260619-cleanup";
+const assetVersion = "20260619-seo-local";
 
 const brand = (light = false) => `
   <span class="brand">
@@ -132,8 +133,9 @@ if (footerTarget) {
             <ul class="footer-list">
               <li><a href="${phoneHref}">Tel. 91 735 33 03</a></li>
               <li><a href="${whatsappHref}">WhatsApp 630 18 74 46</a></li>
-              <li>Plaza de los Tres Olivos, local · 28034 Madrid</li>
+              <li>Plaza de los Tres Olivos, Local 3, s/n · 28034 Madrid</li>
               <li>Lunes a viernes · 9:00-22:00</li>
+              <li><a href="${instagramHref}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
         </div>
