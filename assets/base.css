@@ -1767,6 +1767,14 @@ main:focus {
   color: var(--ink-soft);
 }
 
+.clinic-exercise-heading {
+  margin-top: clamp(56px, 8vw, 96px);
+}
+
+.exercise-gallery-grid .gallery-card img {
+  object-position: center 42%;
+}
+
 .gallery-placeholder {
   display: grid;
   min-height: 260px;
@@ -2740,6 +2748,17 @@ main:focus {
     min-height: 190px;
   }
 
+  .exercise-gallery-grid .gallery-card img {
+    height: clamp(250px, 42vw, 290px);
+    min-height: 250px;
+  }
+
+  .clinic-page .gallery-card img {
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+  }
+
   .gallery-card div {
     padding: 16px;
   }
@@ -3668,8 +3687,14 @@ main:focus {
   }
 
   .technology-hero-media img {
-    height: 330px;
+    height: auto;
     border-radius: var(--radius-md);
+    object-fit: contain;
+  }
+
+  .method-hero-media img {
+    height: auto;
+    object-fit: contain;
   }
 
   .technology-section {
@@ -3788,10 +3813,9 @@ main:focus {
 
 .method-hero-media img {
   width: 100%;
-  height: clamp(280px, 34vw, 390px);
+  height: auto;
   border-radius: var(--radius-lg);
-  object-fit: cover;
-  object-position: 45% center;
+  object-fit: contain;
   box-shadow: var(--shadow-md);
 }
 
@@ -4146,8 +4170,9 @@ main:focus {
   }
 
   .method-hero-media img {
-    height: 280px;
+    height: auto;
     border-radius: var(--radius-md);
+    object-fit: contain;
   }
 
   .method-proof-grid strong {
@@ -4336,7 +4361,7 @@ main:focus {
   }
 
   .method-hero-grid {
-    grid-template-columns: minmax(0, 1.08fr) minmax(320px, .5fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(350px, .58fr);
   }
 
   .method-process-grid {
