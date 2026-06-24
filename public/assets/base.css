@@ -1775,6 +1775,16 @@ main:focus {
   object-position: center 42%;
 }
 
+@media (min-width: 700px) {
+  .clinic-page .gallery-card img {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    object-position: center;
+    background: var(--cream-light);
+  }
+}
+
 .gallery-placeholder {
   display: grid;
   min-height: 260px;
@@ -2320,21 +2330,11 @@ main:focus {
   transform: rotate(-4deg) scale(1.04);
 }
 
-.home-service-grid > a:hover h2 {
+.home-service-grid > a:hover h3 {
   color: var(--blue-medium);
 }
 
-.home-service-grid > a > span:not(.card-icon) {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  color: var(--coral-dark);
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .12em;
-}
-
-.home-service-grid h2 {
+.home-service-grid h3 {
   margin-bottom: 5px;
   padding-right: 26px;
   font-size: 1.3rem;
