@@ -3,3 +3,7 @@ Icon?
 node_modules/
 .wrangler/
 originales-fotograficos/
+# Herramientas locales para generar imágenes (no forman parte del sitio)
+package.json
+package-lock.json
+.claude/
